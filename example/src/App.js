@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 
-import {CreditCard} from 'react-pixel-size';
+import ReactPixelSize from 'react-pixel-size';
 
 export default class App extends Component {
     render() {
         return (
             <div>
-                <CreditCard />
+                <ReactPixelSize onResultChange={(c) => console.log(c)} variant={'card'} />
+                <ReactPixelSize onResultChange={(c) => console.log(c)} variant={'ruler'} />
             </div>
         );
     }

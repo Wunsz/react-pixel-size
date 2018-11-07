@@ -50,7 +50,7 @@ const svgStyles = {
 
 class CreditCard extends React.Component {
     render() {
-        const { chipVariant, lettersVariant } = this.props;
+        const { chipVariant, lettersVariant, other } = this.props;
         const { chipStrokeStyle, embossStyle, backgroundStyle, starStyle } = svgStyles;
 
         const chip = chipVariant === 'gold' ? ['#d0af5b', '#b2890b'] : ['#d6d6d6', '#9d9d9d'];
@@ -69,7 +69,7 @@ class CreditCard extends React.Component {
         />;
 
         return (
-            <svg version="1.1" viewBox="0 0 85.72500 53.97500" width="3.375in" height="2.125in">
+            <svg version="1.1" viewBox="0 0 85.72500 53.97500" {...other}>
                 <defs>
                     <linearGradient {...gradientProps([0, 300, 85, 240, 'backgroundGradient'])}>
                         <stop offset="0" style={{stopColor: this.props.bgGradientStart, stopOpacity: 1}} />
