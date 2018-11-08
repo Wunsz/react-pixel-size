@@ -5,59 +5,25 @@ import ResizableRuler from './Resizables/ResizableRuler/ResizableRuler';
 
 const propTypes = {
     variant: PropTypes.oneOf(['card', 'diagonal', 'ruler']),
+    minDiff: PropTypes.number,
     onResultChange: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
     variant: 'diagonal',
+    minDiff: 1,
 };
 
 class ReactPixelSize extends React.Component {
-    resizable = null;
-
-    state = {
-        pixelSize: 85.72500 / 337.5,
-    };
-
     /**
+     * Create a resizable measurement element (or null if wrong property was given)
      *
-     * @param event
-     * @param direction
-     * @param {HTMLDivElement} refToElement
-     * @param delta
+     * @returns {ResizableCreditCard | ResizableRuler | null}
      */
-    handleResize = (event, direction, refToElement, delta) => {
-        const pixelSize = 85.72500 / refToElement.getBoundingClientRect().width;
-
-        this.setState({
-            pixelSize: pixelSize,
-        });
-
-        this.props.onResultChange(pixelSize);
-    };
-
-    handleGrow = () => {
-        this.resizable.updateSize({
-            width: this.resizable.state.width + 1,
-            height: this.resizable.state.height + 1,
-        });
-    };
-
-    handleShrink = () => {
-        this.resizable.updateSize({
-            width: this.resizable.state.width - 1,
-            height: this.resizable.state.height - 1,
-        });
-    };
-
-    extractRef = (component) => {
-        this.resizable = component;
-    };
-
     getResizable = () => {
         const props = {
             extractRef: this.extractRef,
-            handleResize: this.handleResize,
+            onPixelSizeChange: this.props.onResultChange,
         };
 
         if (this.props.variant === 'card') {
@@ -69,15 +35,17 @@ class ReactPixelSize extends React.Component {
         }
     };
 
+    /**
+     * Renders the element.
+     *
+     * @returns {ReactPixelSize}
+     */
     render() {
         const resizable = this.getResizable();
 
         return (
             <div>
                 {resizable}
-                <button onClick={this.handleGrow}>+</button>
-                <button onClick={this.handleShrink}>-</button>
-                <p>Pixel size: {this.state.pixelSize} </p>
             </div>
         );
     }
