@@ -20,7 +20,7 @@ yarn add react-pixel-size
 
 ```jsx
 import React, { Component } from 'react';
-import ReactPixelSize from 'react-pixel-size';
+import {CardPixelSize, RulerPixelSize, DiagonalPixelSize} from 'react-pixel-size';
 
 class Example extends Component {
   handlePixelSizeChange = (pixelSize) => {
@@ -29,16 +29,95 @@ class Example extends Component {
   
   render () {
     return (
-      <RulerPixelSize onResultChange={this.handlePixelSizeChange} />
-      <CardPixelSize onResultChange={this.handlePixelSizeChange} />
+      <CardPixelSize onResultChange={this.handlePixelSizeChange} />   
+      <RulerPixelSize onResultChange={this.handlePixelSizeChange} />   
+      <DiagonalPixelSize onResultChange={this.handlePixelSizeChange} />
     );
   }
 }
 ```
 
+See `example` catalog for more usages.
+
 ## API
-```
-```
+##### `onPixelSizeChange`
+ - `function(number)`
+ - Default: `null`
+ - Callback fired when pixel size calculation is done.
+ - Accepted by: `CardPixelSize`, `RulerPixelSize`, `DiagonalPixelSize`
+ 
+##### `minDiff`
+ - `number`
+ - Default: `1`
+ - Minimal value by which `grow`/`shrink` is done when resizing by buttons.
+ - Accepted by: `CardPixelSize`, `RulerPixelSize`
+ 
+##### `buttonsProps`
+ - `object`
+ - Default: `{}`
+ - All props passed to the `div` element wrapping `grow` and `shrink` buttons.
+ - Accepted by: `CardPixelSize`, `RulerPixelSize`
+ 
+##### `growComponentProps`
+ - `object`
+ - Default: `{}`
+ - All props passed to the `grow` button.
+ - Accepted by: `CardPixelSize`, `RulerPixelSize`
+ 
+##### `shrinkComponentProps`
+ - `object`
+ - Default: `{}`
+ - All props passed to the `grow` button.
+ - Accepted by: `CardPixelSize`, `RulerPixelSize`
+ 
+##### `inputComponentProps`
+ - `object`
+ - Default: `{}`
+ - All props passed to the diagonal `input` element.
+ - Accepted by: `DiagonalPixelSize`
+ 
+##### `growComponent`
+ - `Component|node`
+ - Default: `<button />`
+ - Component handling clicks resulting in resizable grow.
+ - Accepted by: `CardPixelSize`, `RulerPixelSize`
+
+##### `shrinkComponent`
+ - `Component|node`
+ - Default: `<button />`
+ - Component handling clicks resulting in resizable shrink.
+ - Accepted by: `CardPixelSize`, `RulerPixelSize`
+
+##### `inputComponent`
+ - `Component|node`
+ - Default: `<input type="number" min="0" />`
+ - Component to receive the screen diagonal value.
+ - Accepted by: `DiagonalPixelSize`
+
+##### `rulerLength`
+ - `number`
+ - Default: `3`
+ - Number of centimeters displayed on the ruler element.
+ - Accepted by: `RulerPixelSize`
+ 
+##### `screenWidth`
+ - `number`
+ - Default: `screen.width`
+ - Custom screen resolution width (by default taken from `screen` global).
+ - Accepted by: `DiagonalPixelSize`
+ 
+##### `screenHeight`
+ - `number`
+ - Default: `screen.height`
+ - Custom screen resolution height (by default taken from `screen` global).
+ - Accepted by: `DiagonalPixelSize`
+ 
+##### `millimeters`
+ - `bool`
+ - Default: `false`
+ - Number of centimeters displayed on the ruler element.
+ - Accepted by: `DiagonalPixelSize`
+
 
 ## License
 
