@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {CardPixelSize, RulerPixelSize} from 'react-pixel-size';
+import {CardPixelSize, DiagonalPixelSize, RulerPixelSize} from 'react-pixel-size';
 
 export default class App extends Component {
     render() {
@@ -8,6 +8,7 @@ export default class App extends Component {
             <div>
                 <CardPixelSize onPixelSizeChange={(c) => console.log(c)} />
                 <RulerPixelSize onPixelSizeChange={(c) => console.log(c)} />
+                <DiagonalPixelSize onPixelSizeChange={(c) => console.log(c)} />
             </div>
         );
     }

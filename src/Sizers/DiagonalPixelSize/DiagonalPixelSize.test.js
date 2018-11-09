@@ -1,0 +1,52 @@
+import React from 'react';
+import {configure, mount} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import DiagonalPixelSize from './DiagonalPixelSize';
+
+configure({adapter: new Adapter()});
+
+describe('<DiagonalPixelSize />', () => {
+    it('returns pixel size of 1 when diagonal is set in millimeters', () => {
+        const handleSizeChange = jest.fn();
+        screen.width = 3;
+        screen.height = 4;
+
+        const component = mount(<DiagonalPixelSize onPixelSizeChange={handleSizeChange} millimeters={true} />);
+        component.find('input[name="diagonal"]').simulate('change', {target: {value: 5}});
+
+        expect(handleSizeChange).toHaveBeenCalledWith(1);
+    });
+
+    it('returns pixel size of 1 when diagonal is set in inches', () => {
+        const handleSizeChange = jest.fn();
+        screen.width = 3;
+        screen.height = 4;
+
+        const component = mount(<DiagonalPixelSize onPixelSizeChange={handleSizeChange} millimeters={false} />);
+        component.find('input[name="diagonal"]').simulate('change', {target: {value: 5}});
+
+        expect(handleSizeChange).toHaveBeenCalledWith(25.4000508001016);
+    });
+
+    it('returns pixel size of 1 when diagonal is set in millimeters and width and height are explicit', () => {
+        const handleSizeChange = jest.fn();
+
+        const component = mount(<DiagonalPixelSize
+            screenWidth={3} screenHeight={4} onPixelSizeChange={handleSizeChange} millimeters={true}
+        />);
+        component.find('input[name="diagonal"]').simulate('change', {target: {value: 5}});
+
+        expect(handleSizeChange).toHaveBeenCalledWith(1);
+    });
+
+    it('returns pixel size of 1 when diagonal is set in inches and width and height are explicit', () => {
+        const handleSizeChange = jest.fn();
+
+        const component = mount(<DiagonalPixelSize
+            screenWidth={3} screenHeight={4} onPixelSizeChange={handleSizeChange} millimeters={false}
+        />);
+        component.find('input[name="diagonal"]').simulate('change', {target: {value: 5}});
+
+        expect(handleSizeChange).toHaveBeenCalledWith(25.4000508001016);
+    });
+});
