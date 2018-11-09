@@ -6,11 +6,9 @@ const propTypes = {
     minDiff: PropTypes.number,
 };
 
-const defaultProps = {
-    onPixelSizeChange: () => {},
-    minDiff: 1,
-};
-
+/**
+ * @abstract
+ */
 class ResizableElement extends React.Component {
     resizable = null;
 
@@ -70,10 +68,5 @@ class ResizableElement extends React.Component {
 }
 
 ResizableElement.propTypes = propTypes;
-ResizableElement.defaultProps = defaultProps;
 
-export {
-    ResizableElement,
-    propTypes,
-    defaultProps,
-};
+export default ResizableElement;

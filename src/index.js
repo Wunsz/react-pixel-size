@@ -1,3 +1,2 @@
-import ReactPixelSize from './ReactPixelSize';
-
-export default ReactPixelSize;
+export RulerPixelSize from './Sizers/RulerPixelSize/RulerPixelSize';
+export CardPixelSize from './Sizers/CardPixelSize/CardPixelSize';

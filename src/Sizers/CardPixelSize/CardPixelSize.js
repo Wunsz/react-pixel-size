@@ -1,10 +1,21 @@
 import React from 'react';
 import Resizable from 're-resizable';
+import PropTypes from 'prop-types';
 
-import {ResizableElement, propTypes, defaultProps} from '../ResizableElement';
+import ResizableElement from '../ResizableElement';
 import CreditCard from '../../Measurables/CreditCard/CreditCard';
 
-class ResizableCreditCard extends ResizableElement {
+const propTypes = {
+    onPixelSizeChange: PropTypes.func,
+    minDiff: PropTypes.number,
+};
+
+const defaultProps = {
+    onPixelSizeChange: () => {},
+    minDiff: 1,
+};
+
+class CardPixelSize extends ResizableElement {
     calculateNewPixelSize = (width = null) => {
         return 85.72500 / (width === null ? this.resizable.state.width : width);
     };
@@ -34,7 +45,7 @@ class ResizableCreditCard extends ResizableElement {
     }
 }
 
-ResizableCreditCard.propTypes = propTypes;
-ResizableCreditCard.defaultProps = defaultProps;
+CardPixelSize.propTypes = propTypes;
+CardPixelSize.defaultProps = defaultProps;
 
-export default ResizableCreditCard;
+export default CardPixelSize;

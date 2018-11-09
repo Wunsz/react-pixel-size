@@ -2,20 +2,22 @@ import React from 'react';
 import Resizable from 're-resizable';
 import PropTypes from 'prop-types';
 
-import {ResizableElement, propTypes as parentPropTypes, defaultProps as parentDefaultProps} from '../ResizableElement';
+import ResizableElement from '../ResizableElement';
 import Ruler from '../../Measurables/Ruler/Ruler';
 
 const propTypes = {
-    ...parentPropTypes,
+    onPixelSizeChange: PropTypes.func,
+    minDiff: PropTypes.number,
     rulerLength: PropTypes.number,
 };
 
 const defaultProps = {
-    ...parentDefaultProps,
+    onPixelSizeChange: () => {},
+    minDiff: 1,
     rulerLength: 3,
 };
 
-class ResizableRuler extends ResizableElement {
+class RulerPixelSize extends ResizableElement {
     calculateNewPixelSize = (width = null) => {
         return this.props.rulerLength * 10 / (width === null ? this.resizable.state.width : width);
     };
@@ -46,7 +48,7 @@ class ResizableRuler extends ResizableElement {
     }
 }
 
-ResizableRuler.propTypes = propTypes;
-ResizableRuler.defaultProps = defaultProps;
+RulerPixelSize.propTypes = propTypes;
+RulerPixelSize.defaultProps = defaultProps;
 
-export default ResizableRuler;
+export default RulerPixelSize;

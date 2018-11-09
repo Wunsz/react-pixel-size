@@ -11,21 +11,33 @@
 ```bash
 npm install --save react-pixel-size
 ```
+or
+```bash
+yarn add react-pixel-size
+```
 
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
-
-import ReactPixelSize from 'react-pixel-size'
+import React, { Component } from 'react';
+import ReactPixelSize from 'react-pixel-size';
 
 class Example extends Component {
+  handlePixelSizeChange = (pixelSize) => {
+    console.log(pixelSize);
+  }
+  
   render () {
     return (
-      <ReactPixelSize />
-    )
+      <RulerPixelSize onResultChange={this.handlePixelSizeChange} />
+      <CardPixelSize onResultChange={this.handlePixelSizeChange} />
+    );
   }
 }
+```
+
+## API
+```
 ```
 
 ## License
