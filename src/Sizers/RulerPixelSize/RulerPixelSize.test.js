@@ -28,4 +28,29 @@ describe('<RulerPixelSize />', () => {
 
         expect(handleSizeChange).toHaveBeenCalledWith(0.20408163265306123);
     });
+
+    it('grows by one pixel resulting in 0.19607843137254902 pixel size with custom grow element', () => {
+        const handleSizeChange = jest.fn();
+        const card = mount(<RulerPixelSize
+            rulerLength={1}
+            onPixelSizeChange={handleSizeChange}
+            growComponent={<button name="goBig">Shrink</button>}
+        />);
+
+        card.find('button[name="goBig"]').simulate('click');
+
+        expect(handleSizeChange).toHaveBeenCalledWith(0.19607843137254902);
+    });
+
+    it('shrinks by one pixel resulting in 0.20408163265306123 pixel size with custom shrink element', () => {
+        const handleSizeChange = jest.fn();
+        const card = mount(<RulerPixelSize
+            rulerLength={1}
+            onPixelSizeChange={handleSizeChange}
+            shrinkComponent={<button name="goSmall">Shrink</button>}
+        />);
+        card.find('button[name="goSmall"]').simulate('click');
+
+        expect(handleSizeChange).toHaveBeenCalledWith(0.20408163265306123);
+    });
 });

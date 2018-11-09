@@ -58,6 +58,23 @@ class ResizableElement extends React.Component {
     };
 
     /**
+     * Creates grow/shrink components or uses given one
+     *
+     * @param {*} component
+     * @param {{}} componentProps
+     * @param {function} handleClick
+     * @param {string} name
+     * @returns {*}
+     */
+    getButtonComponent = (component, componentProps, handleClick, name) => {
+        if (component) {
+            return React.cloneElement(component, {...component.props, ...componentProps, onClick: handleClick});
+        } else {
+            return <button name={name} onClick={handleClick} {...componentProps}>+</button>;
+        }
+    };
+
+    /**
      * Calculates new pixel size
      *
      * @abstract

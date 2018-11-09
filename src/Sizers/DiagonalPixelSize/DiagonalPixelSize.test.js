@@ -49,4 +49,19 @@ describe('<DiagonalPixelSize />', () => {
 
         expect(handleSizeChange).toHaveBeenCalledWith(25.4000508001016);
     });
+
+    it('returns pixel size of 1 when diagonal is set in millimeters with custom element', () => {
+        const handleSizeChange = jest.fn();
+        screen.width = 3;
+        screen.height = 4;
+
+        const component = mount(<DiagonalPixelSize
+            onPixelSizeChange={handleSizeChange}
+            millimeters={true}
+            inputComponent={<input name="customElement" />}
+        />);
+        component.find('input[name="customElement"]').simulate('change', {target: {value: 5}});
+
+        expect(handleSizeChange).toHaveBeenCalledWith(1);
+    });
 });

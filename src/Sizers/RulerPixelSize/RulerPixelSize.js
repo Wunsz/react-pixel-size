@@ -9,6 +9,10 @@ const propTypes = {
     onPixelSizeChange: PropTypes.func,
     minDiff: PropTypes.number,
     rulerLength: PropTypes.number,
+    growComponentProps: PropTypes.object,
+    shrinkComponentProps: PropTypes.object,
+    growComponent: PropTypes.element,
+    shrinkComponent: PropTypes.element,
 };
 
 const defaultProps = {
@@ -27,7 +31,20 @@ class RulerPixelSize extends ResizableElement {
     }
 
     render() {
-        const {growButtonProps, shrinkButtonProps, buttonsProps, rulerLength, minDiff, onPixelSizeChange, ...other} = this.props;
+        const {
+            growComponentProps,
+            shrinkComponentProps,
+            buttonsProps,
+            growComponent,
+            shrinkComponent,
+            rulerLength,
+            minDiff,
+            onPixelSizeChange,
+            ...other
+        } = this.props;
+
+        const grow = this.getButtonComponent(growComponent, growComponentProps, this.handleGrow, 'grow');
+        const shrink = this.getButtonComponent(shrinkComponent, shrinkComponentProps, this.handleShrink, 'shrink');
 
         return (
             <div {...other}>
@@ -42,8 +59,8 @@ class RulerPixelSize extends ResizableElement {
                     <Ruler style={{width: '100%'}} length={rulerLength} />
                 </Resizable>
                 <div {...buttonsProps}>
-                    <button name="grow" onClick={this.handleGrow} {...growButtonProps}>+</button>
-                    <button name="shrink" onClick={this.handleShrink} {...shrinkButtonProps}>-</button>
+                    {grow}
+                    {shrink}
                 </div>
             </div>
         );

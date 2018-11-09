@@ -6,7 +6,8 @@ const propTypes = {
     screenWidth: PropTypes.number,
     screenHeight: PropTypes.number,
     millimeters: PropTypes.bool,
-    inputElementProps: PropTypes.object,
+    inputComponentProps: PropTypes.object,
+    inputComponent: PropTypes.element,
 };
 
 const defaultProps = {
@@ -29,13 +30,40 @@ class DiagonalPixelSize extends React.Component {
         this.props.onPixelSizeChange(diagonalInMm / diagonalInPx);
     };
 
+    getInputComponent = (inputComponent, inputComponentProps) => {
+        if (inputComponent) {
+            const props = {...inputComponent.props, ...inputComponentProps, onChange: this.handleChange};
+
+            return React.cloneElement(inputComponent, props);
+        } else {
+            return <input
+                name="diagonal"
+                type="number"
+                min="0"
+                step="0.01"
+                defaultValue="1"
+                onChange={this.handleChange}
+                {...inputComponentProps}
+            />;
+        }
+    };
+
     render() {
-        const {inputElementProps} = this.props;
+        const {
+            inputComponent,
+            inputComponentProps,
+            screenWidth,
+            screenHeight,
+            millimeters,
+            onPixelSizeChange,
+            ...other
+        } = this.props;
+
+        const input = this.getInputComponent(inputComponent, inputComponentProps);
+
         return (
-            <div>
-                <input
-                    name="diagonal" type="number" min="0" step="0.01" defaultValue="1"
-                    onChange={this.handleChange} {...inputElementProps} />
+            <div {...other}>
+                {input}
             </div>
         );
     }

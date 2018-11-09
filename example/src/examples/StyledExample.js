@@ -62,8 +62,8 @@ export default class StyledExample extends Component {
                         <CardPixelSize
                             style={style}
                             buttonsProps={{style: buttonContainerStyle}}
-                            growButtonProps={{style: growButtonProps}}
-                            shrinkButtonProps={{style: shrinkButtonStyle}}
+                            growComponentProps={{style: growButtonProps}}
+                            shrinkComponentProps={{style: shrinkButtonStyle}}
                             onPixelSizeChange={this.handlePixelSizeChange}
                         />
                     </div>
@@ -71,15 +71,15 @@ export default class StyledExample extends Component {
                         <RulerPixelSize
                             style={style}
                             buttonsProps={{style: buttonContainerStyle}}
-                            growButtonProps={{style: growButtonProps}}
-                            shrinkButtonProps={{style: shrinkButtonStyle}}
+                            growComponentProps={{style: growButtonProps}}
+                            shrinkComponentProps={{style: shrinkButtonStyle}}
                             onPixelSizeChange={this.handlePixelSizeChange}
                         />
                     </div>
                     <div className="example" style={{display: 'flex'}}>
                         <DiagonalPixelSize
                             style={style}
-                            inputElementProps={{style: inputElementStyle}}
+                            inputComponentProps={{style: inputElementStyle}}
                             onPixelSizeChange={this.handlePixelSizeChange}
                         />
                     </div>

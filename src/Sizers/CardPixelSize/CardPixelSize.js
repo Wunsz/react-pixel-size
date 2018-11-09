@@ -9,8 +9,10 @@ const propTypes = {
     onPixelSizeChange: PropTypes.func,
     minDiff: PropTypes.number,
     buttonsProps: PropTypes.object,
-    growButtonProps: PropTypes.object,
-    shrinkButtonProps: PropTypes.object,
+    growComponentProps: PropTypes.object,
+    shrinkComponentProps: PropTypes.object,
+    growComponent: PropTypes.element,
+    shrinkComponent: PropTypes.element,
 };
 
 const defaultProps = {
@@ -28,7 +30,19 @@ class CardPixelSize extends ResizableElement {
     }
 
     render() {
-        const {growButtonProps, shrinkButtonProps, buttonsProps, minDiff, onPixelSizeChange, ...other} = this.props;
+        const {
+            growComponentProps,
+            shrinkComponentProps,
+            buttonsProps,
+            growComponent,
+            shrinkComponent,
+            minDiff,
+            onPixelSizeChange,
+            ...other
+        } = this.props;
+
+        const grow = this.getButtonComponent(growComponent, growComponentProps, this.handleGrow, 'grow');
+        const shrink = this.getButtonComponent(shrinkComponent, shrinkComponentProps, this.handleShrink, 'shrink');
 
         return (
             <div {...other}>
@@ -44,8 +58,8 @@ class CardPixelSize extends ResizableElement {
                     <CreditCard style={{width: '100%', height: '100%'}} />
                 </Resizable>
                 <div {...buttonsProps}>
-                    <button name="grow" onClick={this.handleGrow} {...growButtonProps}>+</button>
-                    <button name="shrink" onClick={this.handleShrink} {...shrinkButtonProps}>-</button>
+                    {grow}
+                    {shrink}
                 </div>
             </div>
         );
