@@ -8,6 +8,9 @@ import CreditCard from '../../Measurables/CreditCard/CreditCard';
 const propTypes = {
     onPixelSizeChange: PropTypes.func,
     minDiff: PropTypes.number,
+    buttonsProps: PropTypes.object,
+    growButtonProps: PropTypes.object,
+    shrinkButtonProps: PropTypes.object,
 };
 
 const defaultProps = {
@@ -25,8 +28,10 @@ class CardPixelSize extends ResizableElement {
     }
 
     render() {
+        const {growButtonProps, shrinkButtonProps, buttonsProps, minDiff, onPixelSizeChange, ...other} = this.props;
+
         return (
-            <React.Fragment>
+            <div {...other}>
                 <Resizable
                     defaultSize={{
                         width: 337.5,
@@ -38,9 +43,11 @@ class CardPixelSize extends ResizableElement {
                 >
                     <CreditCard style={{width: '100%', height: '100%'}} />
                 </Resizable>
-                <button name="grow" onClick={this.handleGrow}>+</button>
-                <button name="shrink" onClick={this.handleShrink}>-</button>
-            </React.Fragment>
+                <div {...buttonsProps}>
+                    <button name="grow" onClick={this.handleGrow} {...growButtonProps}>+</button>
+                    <button name="shrink" onClick={this.handleShrink} {...shrinkButtonProps}>-</button>
+                </div>
+            </div>
         );
     }
 }

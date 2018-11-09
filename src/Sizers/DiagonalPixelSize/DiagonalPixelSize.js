@@ -6,6 +6,7 @@ const propTypes = {
     screenWidth: PropTypes.number,
     screenHeight: PropTypes.number,
     millimeters: PropTypes.bool,
+    inputElementProps: PropTypes.object,
 };
 
 const defaultProps = {
@@ -29,9 +30,12 @@ class DiagonalPixelSize extends React.Component {
     };
 
     render() {
+        const {inputElementProps} = this.props;
         return (
             <div>
-                <input name="diagonal" type="number" min="0" step="0.01" defaultValue="1" onChange={this.handleChange} />
+                <input
+                    name="diagonal" type="number" min="0" step="0.01" defaultValue="1"
+                    onChange={this.handleChange} {...inputElementProps} />
             </div>
         );
     }

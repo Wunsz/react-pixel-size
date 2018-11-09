@@ -27,10 +27,10 @@ class RulerPixelSize extends ResizableElement {
     }
 
     render() {
-        const {rulerLength} = this.props;
+        const {growButtonProps, shrinkButtonProps, buttonsProps, rulerLength, minDiff, onPixelSizeChange, ...other} = this.props;
 
         return (
-            <React.Fragment>
+            <div {...other}>
                 <Resizable
                     defaultSize={{
                         width: 50 * rulerLength,
@@ -41,9 +41,11 @@ class RulerPixelSize extends ResizableElement {
                 >
                     <Ruler style={{width: '100%'}} length={rulerLength} />
                 </Resizable>
-                <button name="grow" onClick={this.handleGrow}>+</button>
-                <button name="shrink" onClick={this.handleShrink}>-</button>
-            </React.Fragment>
+                <div {...buttonsProps}>
+                    <button name="grow" onClick={this.handleGrow} {...growButtonProps}>+</button>
+                    <button name="shrink" onClick={this.handleShrink} {...shrinkButtonProps}>-</button>
+                </div>
+            </div>
         );
     }
 }
