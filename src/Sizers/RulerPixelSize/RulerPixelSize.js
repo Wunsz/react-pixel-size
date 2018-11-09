@@ -23,7 +23,7 @@ const defaultProps = {
 
 class RulerPixelSize extends ResizableElement {
     calculateNewPixelSize = (width = null) => {
-        return this.props.rulerLength * 10 / (width === null ? this.resizable.state.width : width);
+        return this.props.rulerLength * 10000 / (width === null ? this.resizable.state.width : width);
     };
 
     componentDidMount() {

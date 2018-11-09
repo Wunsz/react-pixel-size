@@ -22,7 +22,7 @@ const defaultProps = {
 
 class CardPixelSize extends ResizableElement {
     calculateNewPixelSize = (width = null) => {
-        return 85.72500 / (width === null ? this.resizable.state.width : width);
+        return 85725.00 / (width === null ? this.resizable.state.width : width);
     };
 
     componentDidMount() {

@@ -24,7 +24,7 @@ class DiagonalPixelSize extends React.Component {
         const width = screenWidth == null ? screen.width : screenWidth;
         const height = screenHeight == null ? screen.height : screenHeight;
 
-        const diagonalInMm = event.target.value / (millimeters ? 1 : 0.039370);
+        const diagonalInMm = 1000 * event.target.value / (millimeters ? 1 : 0.039370);
         const diagonalInPx = Math.sqrt(width * width + height * height);
 
         this.props.onPixelSizeChange(diagonalInMm / diagonalInPx);

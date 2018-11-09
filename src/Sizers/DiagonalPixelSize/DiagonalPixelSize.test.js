@@ -6,7 +6,7 @@ import DiagonalPixelSize from './DiagonalPixelSize';
 configure({adapter: new Adapter()});
 
 describe('<DiagonalPixelSize />', () => {
-    it('returns pixel size of 1 when diagonal is set in millimeters', () => {
+    it('returns pixel size of 1000 when diagonal is set in millimeters', () => {
         const handleSizeChange = jest.fn();
         screen.width = 3;
         screen.height = 4;
@@ -14,10 +14,10 @@ describe('<DiagonalPixelSize />', () => {
         const component = mount(<DiagonalPixelSize onPixelSizeChange={handleSizeChange} millimeters={true} />);
         component.find('input[name="diagonal"]').simulate('change', {target: {value: 5}});
 
-        expect(handleSizeChange).toHaveBeenCalledWith(1);
+        expect(handleSizeChange).toHaveBeenCalledWith(1000);
     });
 
-    it('returns pixel size of 1 when diagonal is set in inches', () => {
+    it('returns pixel size of 25400.0508001016 when diagonal is set in inches', () => {
         const handleSizeChange = jest.fn();
         screen.width = 3;
         screen.height = 4;
@@ -25,10 +25,10 @@ describe('<DiagonalPixelSize />', () => {
         const component = mount(<DiagonalPixelSize onPixelSizeChange={handleSizeChange} millimeters={false} />);
         component.find('input[name="diagonal"]').simulate('change', {target: {value: 5}});
 
-        expect(handleSizeChange).toHaveBeenCalledWith(25.4000508001016);
+        expect(handleSizeChange).toHaveBeenCalledWith(25400.0508001016);
     });
 
-    it('returns pixel size of 1 when diagonal is set in millimeters and width and height are explicit', () => {
+    it('returns pixel size of 1000 when diagonal is set in millimeters and width and height are explicit', () => {
         const handleSizeChange = jest.fn();
 
         const component = mount(<DiagonalPixelSize
@@ -36,10 +36,10 @@ describe('<DiagonalPixelSize />', () => {
         />);
         component.find('input[name="diagonal"]').simulate('change', {target: {value: 5}});
 
-        expect(handleSizeChange).toHaveBeenCalledWith(1);
+        expect(handleSizeChange).toHaveBeenCalledWith(1000);
     });
 
-    it('returns pixel size of 1 when diagonal is set in inches and width and height are explicit', () => {
+    it('returns pixel size of 25400.0508001016 when diagonal is set in inches and width and height are explicit', () => {
         const handleSizeChange = jest.fn();
 
         const component = mount(<DiagonalPixelSize
@@ -47,10 +47,10 @@ describe('<DiagonalPixelSize />', () => {
         />);
         component.find('input[name="diagonal"]').simulate('change', {target: {value: 5}});
 
-        expect(handleSizeChange).toHaveBeenCalledWith(25.4000508001016);
+        expect(handleSizeChange).toHaveBeenCalledWith(25400.0508001016);
     });
 
-    it('returns pixel size of 1 when diagonal is set in millimeters with custom element', () => {
+    it('returns pixel size of 1000 when diagonal is set in millimeters with custom element', () => {
         const handleSizeChange = jest.fn();
         screen.width = 3;
         screen.height = 4;
@@ -62,6 +62,6 @@ describe('<DiagonalPixelSize />', () => {
         />);
         component.find('input[name="customElement"]').simulate('change', {target: {value: 5}});
 
-        expect(handleSizeChange).toHaveBeenCalledWith(1);
+        expect(handleSizeChange).toHaveBeenCalledWith(1000);
     });
 });
