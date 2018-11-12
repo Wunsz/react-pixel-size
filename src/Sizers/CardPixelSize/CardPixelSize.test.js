@@ -44,4 +44,22 @@ describe('<CardPixelSize />', () => {
 
         expect(handleSizeChange).toHaveBeenCalledWith(254.7548291233284);
     });
+
+    it('it returns 85725 if card is 1 px wide (taken from the resizable element)', () => {
+        const card = new class Card extends CardPixelSize {
+            resizable = {
+                state: {
+                    width: 1,
+                },
+            };
+        }();
+
+        expect(card.calculateNewPixelSize()).toEqual(85725);
+    });
+
+    it('it returns 85725 if card is 1 px wide', () => {
+        const card = new CardPixelSize();
+
+        expect(card.calculateNewPixelSize(1)).toEqual(85725);
+    });
 });

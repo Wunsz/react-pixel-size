@@ -53,4 +53,30 @@ describe('<RulerPixelSize />', () => {
 
         expect(handleSizeChange).toHaveBeenCalledWith(204.08163265306123);
     });
+
+    it('it returns 10000 if ruler is 1 px wide (taken from resizable element)', () => {
+        const ruler = new class Ruler extends RulerPixelSize {
+            props = {
+                rulerLength: 1,
+            };
+            resizable = {
+                state: {
+                    width: 1,
+                },
+            };
+        }();
+
+        expect(ruler.calculateNewPixelSize()).toEqual(10000);
+    });
+
+
+    it('it returns 10000 if ruler is 1 px wide', () => {
+        const ruler = new class Ruler extends RulerPixelSize {
+            props = {
+                rulerLength: 1,
+            }
+        }();
+
+        expect(ruler.calculateNewPixelSize(1)).toEqual(10000);
+    });
 });

@@ -77,7 +77,7 @@ class CreditCard extends React.Component {
                     </linearGradient>
                     <linearGradient {...gradientProps([30, 270, 40, 235, 'numbersGradient'])}>
                         <stop offset="0" style={{stopColor: letters[0], stopOpacity: 1}} />
-                        <stop offset="1" style={{stopColor: letters[1], stopOpacity: 0}} />
+                        <stop offset="1" style={{stopColor: letters[1], stopOpacity: 1}} />
                     </linearGradient>
                     <linearGradient {...gradientProps([30, 260, 40, 270, 'chipGradient'])}>
                         <stop offset="0" style={{stopColor: chip[0], stopOpacity: 1}} />

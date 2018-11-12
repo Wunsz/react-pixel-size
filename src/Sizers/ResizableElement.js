@@ -81,7 +81,9 @@ class ResizableElement extends React.Component {
      * @param {number|null} width - width to be assumed (if null retrieved from re-resizable element)
      * @returns {number}
      */
-    calculateNewPixelSize = (width = null) => {};
+    calculateNewPixelSize = (width = null) => {
+        throw new Error('You have to implement the method `calculateNewPixelSize`!');
+    };
 }
 
 ResizableElement.propTypes = propTypes;
