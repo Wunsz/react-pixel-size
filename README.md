@@ -2,7 +2,7 @@
 
 > Determine your screen pixel size in micrometers (with user interaction).
 
-[![NPM](https://img.shields.io/npm/v/react-pixel-size.svg)](https://www.npmjs.com/package/react-pixel-size) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) ![NpmLicense](https://img.shields.io/npm/l/react-pixel-size.svg) [![pipeline status](https://gitlab.com/codeinthecup/react-pixel-size/badges/master/pipeline.svg)](https://gitlab.com/codeinthecup/react-pixel-size/commits/master) [![coverage report](https://gitlab.com/codeinthecup/react-pixel-size/badges/master/coverage.svg)](https://gitlab.com/codeinthecup/react-pixel-size/commits/master)
+[![NPM](https://img.shields.io/npm/v/react-pixel-size.svg)](https://www.npmjs.com/package/react-pixel-size) [![pipeline status](https://gitlab.com/codeinthecup/react-pixel-size/badges/master/pipeline.svg)](https://gitlab.com/codeinthecup/react-pixel-size/commits/master) [![coverage report](https://gitlab.com/codeinthecup/react-pixel-size/badges/master/coverage.svg)](https://gitlab.com/codeinthecup/react-pixel-size/commits/master)
 
 `react-pixel-size` is a library that helps you determine actual size (in micrometers) of the pixel on user's device by allowing it to measure a physical object like credit card or ruler with pixels (see examples).
 
