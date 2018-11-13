@@ -117,7 +117,17 @@ See `example` catalog for more usages.
  - Default: `false`
  - Number of centimeters displayed on the ruler element.
  - Accepted by: `DiagonalPixelSize`
-
+ 
+##### `cardDisplaySettings`
+ - `object`
+ - Default: `{}`
+ - Display settings styling credit-card. It has following options:
+    - `bgGradientStart` - Gradient start color (Default: `#1a845a`)
+    - `bgGradientEnd` - Gradient end color (Default: `#58e0ab`)
+    - `chipVariant` - Color of card's chip: `silver` or `gold` (Default: `silver`)
+    - `lettersVariant` - Color of card's letters: `silver` or `gold` (Default: `silver`)
+    - `withStar` - Decoration star (Default: `true`)
+ - Accepted by: `CardPixelSize`
 
 ## License
 

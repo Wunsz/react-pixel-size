@@ -31,7 +31,9 @@ describe('<CardPixelSize />', () => {
 
     it('grows by one pixel resulting in 253.2496307237814 pixel size with custom grow element', () => {
         const handleSizeChange = jest.fn();
-        const card = mount(<CardPixelSize onPixelSizeChange={handleSizeChange} growComponent={<button name="goBig">Shrink</button>}/>);
+        const card = mount(<CardPixelSize
+            onPixelSizeChange={handleSizeChange} growComponent={<button name="goBig">Shrink</button>}
+        />);
         card.find('button[name="goBig"]').simulate('click');
 
         expect(handleSizeChange).toHaveBeenCalledWith(253.2496307237814);
@@ -39,7 +41,9 @@ describe('<CardPixelSize />', () => {
 
     it('shrinks by one pixel resulting in 254.7548291233284 pixel size with custom shrink element', () => {
         const handleSizeChange = jest.fn();
-        const card = mount(<CardPixelSize onPixelSizeChange={handleSizeChange} shrinkComponent={<button name="goSmall">Shrink</button>}/>);
+        const card = mount(<CardPixelSize
+            onPixelSizeChange={handleSizeChange} shrinkComponent={<button name="goSmall">Shrink</button>}
+        />);
         card.find('button[name="goSmall"]').simulate('click');
 
         expect(handleSizeChange).toHaveBeenCalledWith(254.7548291233284);

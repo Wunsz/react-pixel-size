@@ -3,9 +3,20 @@ import CreditCard from './CreditCard';
 import {shallow, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
+import * as Utils from '../../utils';
+const originalUniqid = Utils.uniqid;
+
 configure({adapter: new Adapter()});
 
 describe('<CreditCard />', () => {
+    beforeAll(() => {
+        Utils.uniqid = jest.fn(() => '_test');
+    });
+
+    afterAll(() => {
+        Utils.uniqid = originalUniqid;
+    });
+
     it('has a star by default', () => {
         const card = shallow(<CreditCard />);
 
@@ -20,7 +31,7 @@ describe('<CreditCard />', () => {
 
     it('has silver chip by default', () => {
         const card = shallow(<CreditCard withStar={false} />);
-        const gradient = card.find('#chipGradient');
+        const gradient = card.find('#_test-chipGradient');
 
         expect(gradient.find('stop[offset="0"]').prop('style')).toEqual({stopColor: '#d6d6d6', stopOpacity: 1});
         expect(gradient.find('stop[offset="0.5"]').prop('style')).toEqual({stopColor: '#9d9d9d', stopOpacity: 1});
@@ -29,7 +40,7 @@ describe('<CreditCard />', () => {
 
     it('has gold chip if selected', () => {
         const card = shallow(<CreditCard withStar={false} chipVariant="gold" />);
-        const gradient = card.find('#chipGradient');
+        const gradient = card.find('#_test-chipGradient');
 
         expect(gradient.find('stop[offset="0"]').prop('style')).toEqual({stopColor: '#d0af5b', stopOpacity: 1});
         expect(gradient.find('stop[offset="0.5"]').prop('style')).toEqual({stopColor: '#b2890b', stopOpacity: 1});
@@ -38,7 +49,7 @@ describe('<CreditCard />', () => {
 
     it('has silver letters by default', () => {
         const card = shallow(<CreditCard withStar={false} />);
-        const gradient = card.find('#numbersGradient');
+        const gradient = card.find('#_test-numbersGradient');
 
         expect(gradient.find('stop[offset="0"]').prop('style')).toEqual({stopColor: '#d6d6d6', stopOpacity: 1});
         expect(gradient.find('stop[offset="1"]').prop('style')).toEqual({stopColor: '#9d9d9d', stopOpacity: 1});
@@ -46,10 +57,9 @@ describe('<CreditCard />', () => {
 
     it('has gold letters if selected', () => {
         const card = shallow(<CreditCard withStar={false} lettersVariant="gold" />);
-        const gradient = card.find('#numbersGradient');
+        const gradient = card.find('#_test-numbersGradient');
 
         expect(gradient.find('stop[offset="0"]').prop('style')).toEqual({stopColor: '#d0af5b', stopOpacity: 1});
         expect(gradient.find('stop[offset="1"]').prop('style')).toEqual({stopColor: '#b2890b', stopOpacity: 1});
     });
-
 });

@@ -65,6 +65,14 @@ export default class StyledExample extends Component {
                             growComponentProps={{style: growButtonProps}}
                             shrinkComponentProps={{style: shrinkButtonStyle}}
                             onPixelSizeChange={this.handlePixelSizeChange}
+                            cardDisplaySettings={{
+                                lettersVariant: 'gold',
+                                chipVariant: 'gold',
+                                bgGradientStart: '#f00988',
+                                bgGradientEnd: '#7e77ff',
+                                withStar: false,
+
+                            }}
                         />
                     </div>
                     <div className="example" style={{display: 'flex'}}>

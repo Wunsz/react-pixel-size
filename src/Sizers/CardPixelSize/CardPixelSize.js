@@ -13,6 +13,13 @@ const propTypes = {
     shrinkComponentProps: PropTypes.object,
     growComponent: PropTypes.element,
     shrinkComponent: PropTypes.element,
+    cardDisplaySettings: PropTypes.shape({
+        bgGradientStart: PropTypes.string,
+        bgGradientEnd: PropTypes.string,
+        chipVariant: PropTypes.oneOf(['silver', 'gold']),
+        lettersVariant: PropTypes.oneOf(['silver', 'gold']),
+        withStar: PropTypes.bool,
+    }),
 };
 
 const defaultProps = {
@@ -36,6 +43,7 @@ class CardPixelSize extends ResizableElement {
             buttonsProps,
             growComponent,
             shrinkComponent,
+            cardDisplaySettings,
             minDiff,
             onPixelSizeChange,
             ...other
@@ -55,7 +63,7 @@ class CardPixelSize extends ResizableElement {
                     onResize={this.handlePixelSizeChange}
                     ref={this.extractRef}
                 >
-                    <CreditCard style={{width: '100%', height: '100%'}} />
+                    <CreditCard style={{width: '100%', height: '100%'}} {...cardDisplaySettings} />
                 </Resizable>
                 <div {...buttonsProps}>
                     {grow}
