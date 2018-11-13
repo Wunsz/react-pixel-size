@@ -1,6 +1,6 @@
 {
   "name": "react-pixel-size",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Determine your screen pixel size in micrometers (with user interaction).",
   "repository": "https://gitlab.com/codeinthecup/react-pixel-size",
   "author": "Bartosz 'Wunsz' Jabłoński | Code in the Cup",
